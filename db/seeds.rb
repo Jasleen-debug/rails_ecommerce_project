@@ -14,12 +14,12 @@ NUMBER_OF_FOOD_CATEGORIES.times do
       price:       1.2 * rand(5..30)
     )
 
-    # query = URI.encode_www_form_component([food_item.name, food_category.name].join(","))
-    # downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
-    # food_item.image.attach(io:       downloaded_image,
-    #                        filename: "m-#{[food_item.name,
-    #                                        food_category.name].join('-')}.jpg")
-    # sleep(1)
+    query = URI.encode_www_form_component([food_item.name, food_category.name, "food"].join(","))
+    downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
+    food_item.image.attach(io:       downloaded_image,
+                           filename: "m-#{[food_item.name,
+                                           food_category.name].join('-')}.jpg")
+    sleep(1)
   end
 end
 
@@ -30,12 +30,12 @@ coffee = FoodCategory.create(name: "Beverages - Coffee")
     description: Faker::Coffee.notes,
     price:       1.2 * rand(1..10)
   )
-  # query = URI.encode_www_form_component([food_item.name, food_category.name].join(","))
-  # downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
-  # food_item.image.attach(io:       downloaded_image,
-  #                        filename: "m-#{[food_item.name,
-  #                                        food_category.name].join('-')}.jpg")
-  # sleep(1)
+  query = URI.encode_www_form_component([food_item.name, coffee.name, "coffee"].join(","))
+  downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
+  food_item.image.attach(io:       downloaded_image,
+                         filename: "m-#{[food_item.name,
+                                         coffee.name].join('-')}.jpg")
+  sleep(1)
 end
 
 tea = FoodCategory.create(name: "Beverages - Tea")
@@ -45,12 +45,12 @@ tea = FoodCategory.create(name: "Beverages - Tea")
     description: Faker::Tea.type,
     price:       1.2 * rand(1..10)
   )
-  # query = URI.encode_www_form_component([food_item.name, food_category.name].join(","))
-  # downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
-  # food_item.image.attach(io:       downloaded_image,
-  #                        filename: "m-#{[food_item.name,
-  #                                        food_category.name].join('-')}.jpg")
-  # sleep(1)
+  query = URI.encode_www_form_component([food_item.name, tea.name, "tea"].join(","))
+  downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
+  food_item.image.attach(io:       downloaded_image,
+                         filename: "m-#{[food_item.name,
+                                         tea.name].join('-')}.jpg")
+  sleep(1)
 end
 
 beer = FoodCategory.create(name: "Beverages - Beer")
@@ -62,12 +62,12 @@ beer = FoodCategory.create(name: "Beverages - Beer")
     price:       0.2 * rand(10..20)
   )
 
-  # query = URI.encode_www_form_component([food_item.name, food_category.name].join(","))
-  # downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
-  # food_item.image.attach(io:       downloaded_image,
-  #                        filename: "m-#{[food_item.name,
-  #                                        food_category.name].join('-')}.jpg")
-  # sleep(1)
+  query = URI.encode_www_form_component([food_item.name, beer.name, "beer"].join(","))
+  downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
+  food_item.image.attach(io:       downloaded_image,
+                         filename: "m-#{[food_item.name,
+                                         beer.name].join('-')}.jpg")
+  sleep(1)
 end
 
 dessert = FoodCategory.create(name: "Desserts")
@@ -77,12 +77,12 @@ dessert = FoodCategory.create(name: "Desserts")
     description: "It is topped with #{Faker::Dessert.topping} and contains #{Faker::Dessert.flavor}",
     price:       0.3 * rand(5..15)
   )
-  # query = URI.encode_www_form_component([food_item.name, food_category.name].join(","))
-  # downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
-  # food_item.image.attach(io:       downloaded_image,
-  #                        filename: "m-#{[food_item.name,
-  #                                        food_category.name].join('-')}.jpg")
-  # sleep(1)
+  query = URI.encode_www_form_component([food_item.name, dessert.name, "dessert"].join(","))
+  downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
+  food_item.image.attach(io:       downloaded_image,
+                         filename: "m-#{[food_item.name,
+                                         dessert.name].join('-')}.jpg")
+  sleep(1)
 end
 
 puts "Created #{FoodCategory.count} Food categories."
