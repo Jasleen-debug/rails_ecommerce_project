@@ -1,3 +1,4 @@
+<%= paginate @food_items %>
 <div class="columns is-fullheight">
 <div class="columns is-multiline">
   <%= render partial: 'food_items/food_item',
@@ -5,4 +6,6 @@
              locals: { show_link: true } %>
 </div>
 </div>
+<%= paginate @food_items %>
+
 
