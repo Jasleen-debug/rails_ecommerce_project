@@ -30,6 +30,12 @@ coffee = FoodCategory.create(name: "Beverages - Coffee")
     description: Faker::Coffee.notes,
     price:       1.2 * rand(1..10)
   )
+  # query = URI.encode_www_form_component([food_item.name, food_category.name].join(","))
+  # downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
+  # food_item.image.attach(io:       downloaded_image,
+  #                        filename: "m-#{[food_item.name,
+  #                                        food_category.name].join('-')}.jpg")
+  # sleep(1)
 end
 
 tea = FoodCategory.create(name: "Beverages - Tea")
@@ -39,6 +45,12 @@ tea = FoodCategory.create(name: "Beverages - Tea")
     description: Faker::Tea.type,
     price:       1.2 * rand(1..10)
   )
+  # query = URI.encode_www_form_component([food_item.name, food_category.name].join(","))
+  # downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
+  # food_item.image.attach(io:       downloaded_image,
+  #                        filename: "m-#{[food_item.name,
+  #                                        food_category.name].join('-')}.jpg")
+  # sleep(1)
 end
 
 beer = FoodCategory.create(name: "Beverages - Beer")
@@ -49,6 +61,13 @@ beer = FoodCategory.create(name: "Beverages - Beer")
                   it contains a hint of #{Faker::Beer.malts} and #{Faker::Beer.yeast}.",
     price:       0.2 * rand(10..20)
   )
+
+  # query = URI.encode_www_form_component([food_item.name, food_category.name].join(","))
+  # downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
+  # food_item.image.attach(io:       downloaded_image,
+  #                        filename: "m-#{[food_item.name,
+  #                                        food_category.name].join('-')}.jpg")
+  # sleep(1)
 end
 
 dessert = FoodCategory.create(name: "Desserts")
@@ -58,11 +77,18 @@ dessert = FoodCategory.create(name: "Desserts")
     description: "It is topped with #{Faker::Dessert.topping} and contains #{Faker::Dessert.flavor}",
     price:       0.3 * rand(5..15)
   )
+  # query = URI.encode_www_form_component([food_item.name, food_category.name].join(","))
+  # downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
+  # food_item.image.attach(io:       downloaded_image,
+  #                        filename: "m-#{[food_item.name,
+  #                                        food_category.name].join('-')}.jpg")
+  # sleep(1)
 end
 
 puts "Created #{FoodCategory.count} Food categories."
 puts "Created #{FoodItem.count} Food items."
+
 # if Rails.env.development?
 #   AdminUser.create!(email: "admin@example.com", password: "password",
-#                      password_confirmation: "password")
+#                     password_confirmation: "password")
 # end
