@@ -1,2 +1,6 @@
-<h1>FoodCategories#show</h1>
-<p>Find me in app/views/food_categories/show.html.erb</p>
+<h2 class="title is-2"><%= @food_category.name%></h2>
+
+<h3 class='title is-3'>Food items available in <%= @food_category.name %></h3>
+<div class="columns is-multiline">
+  <%= render partial: @food_category.food_items, locals: { show_link: true } %>
+</div>
