@@ -1,2 +1,8 @@
-<h1>FoodItems#index</h1>
-<p>Find me in app/views/food_items/index.html.erb</p>
+<div class="columns is-fullheight">
+<div class="columns is-multiline">
+  <%= render partial: 'food_items/food_item',
+             collection: @food_items,
+             locals: { show_link: true } %>
+</div>
+</div>
+

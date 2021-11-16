@@ -1,2 +1,5 @@
-<h1>FoodItems#show</h1>
-<p>Find me in app/views/food_items/show.html.erb</p>
+<div class="columns">
+  <%= render partial: 'food_item',
+             object: @food_item,
+             locals: { show_link: false } %>
+</div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsEcommerceProject</title>
+    <title>Ethnic Kitchen + Bar</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,19 +10,24 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://js.stripe.com/v3"></script>
+
   </head>
 
   <body>
-    <header>
-      <h1>Ethnic Kitchen + Bar</h1>
-      <h3>Authentic Taste & Modern Experience</h3>
-    </header>
-    <main>
-      <%= yield %>
-    </main>
-    <footer>
-      <hr>
-      <p> Ethnic Kitchen + Bar - Copywrong <%= Time.current.year %></p>
-    </footer>
+    <section class="section">
+      <div class="container">
+        <header>
+          <h1 class="title is-1">Ethnic Kitchen + Bar</h1>
+          <h3 class="subtitle is-4">Authentic Taste & Modern Experience</h3>
+        </header>
+        <br>
+        <hr>
+        <%= yield %>
+        <footer>
+          <hr>
+          <p>Ethnic Kitchen + Bar - Copywrong <%= Time.current.year %></p>
+        </footer>
+      </div>
+    </section>
   </body>
 </html>
