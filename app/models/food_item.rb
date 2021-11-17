@@ -4,4 +4,5 @@ class FoodItem < ApplicationRecord
   validates :name, :description, :price, presence: true
   validates :price, numericality: true
   paginates_per 12
+  # Hello friends
 end
