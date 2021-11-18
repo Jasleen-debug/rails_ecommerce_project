@@ -1,0 +1,18 @@
+<p class="is-size-3 has-text-centered">
+<strong>
+  Found <%= pluralize(@food_items.count, 'result') %>
+  for the search term "<%= params[:keywords] %>".
+  </strong>
+</p>
+<br>
+<div class="search-results columns is-multiline">
+  <%# <ul>
+  <% @food_items.each do |food_item| %>
+    <%# <li class="list-group-item list-group-item-info"> <%= link_to food_item.name, food_item %></li>
+  <%# <% end %>
+  <%# </ul>  %>
+
+  <%= render partial: 'food_items/food_item',
+             collection: @food_items,
+             locals: { show_link: true } %>
+</div>

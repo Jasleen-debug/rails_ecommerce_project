@@ -6,4 +6,8 @@ class FoodItemsController < ApplicationController
   def show
     @food_item = FoodItem.find(params[:id])
   end
+
+  def search
+    @food_items = FoodItem.search(params[:keywords])
+  end
 end

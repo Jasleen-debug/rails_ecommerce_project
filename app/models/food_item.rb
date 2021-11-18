@@ -4,5 +4,12 @@ class FoodItem < ApplicationRecord
   validates :name, :description, :price, presence: true
   validates :price, numericality: true
   paginates_per 12
-  # Hello friends
+
+  def self.search(keywords)
+    if keywords
+      where("name LIKE ?", "%#{keywords}%").order("name DESC")
+    else
+      order("name DESC")
+    end
+  end
 end

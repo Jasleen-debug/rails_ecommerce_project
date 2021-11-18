@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # get "food_categories/index"
   # get "food_categories/show"
   resources :food_categories, only: %i[index show]
-  resources :food_items, only: %i[index show]
+  # resources :food_items, only: %i[index show]
 
   resources :food_items, only: %i[index show] do
     collection do
