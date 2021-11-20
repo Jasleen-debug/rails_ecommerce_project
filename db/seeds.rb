@@ -1,6 +1,8 @@
 NUMBER_OF_FOOD_CATEGORIES = 5
 DISHES_PER_CATEGORY = 10
 
+
+
 FoodItem.destroy_all
 FoodCategory.destroy_all
 

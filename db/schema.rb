@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_20_205524) do
+ActiveRecord::Schema.define(version: 2021_11_20_232050) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -82,6 +82,29 @@ ActiveRecord::Schema.define(version: 2021_11_20_205524) do
     t.index ["food_category_id"], name: "index_food_items_on_food_category_id"
   end
 
+  create_table "order_food_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.decimal "total"
+    t.decimal "unit_price"
+    t.integer "order_id", null: false
+    t.integer "food_item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["food_item_id"], name: "index_order_food_items_on_food_item_id"
+    t.index ["order_id"], name: "index_order_food_items_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal "subtotal"
+    t.decimal "total"
+    t.decimal "total_tax"
+    t.string "status"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "provinces", force: :cascade do |t|
     t.string "name"
     t.decimal "pst"
@@ -107,4 +130,7 @@ ActiveRecord::Schema.define(version: 2021_11_20_205524) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "food_items", "food_categories"
+  add_foreign_key "order_food_items", "food_items"
+  add_foreign_key "order_food_items", "orders"
+  add_foreign_key "orders", "users"
 end
