@@ -1,3 +1,6 @@
+<% name = current_user.present? ? current_user.email : 'Guest user' %>
+<h1>Welcome, <%= name %> </h1>
+
 <%= form_with(url: search_food_items_path, local: true, method: "get", class: 'mt-5 mb-5') do |f|%>
   <div class="field has-addons">
     <div class="control">
