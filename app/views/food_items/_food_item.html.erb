@@ -1,4 +1,8 @@
+<% if controller_name == "food_items" && action_name == "show"%>
+<div class="column is-desktop">
+<% else %>
 <div class="column is-4">
+<%end%>
 <div class="card">
   <% if food_item.image.present? %>
   <div class="card-image">
@@ -30,6 +34,14 @@
   <footer class="card-footer">
   <% if controller_name == "food_items" && action_name == "index"%>
     <a href="/food_items/<%= food_item.id%>" class="card-footer-item">View Details</a>
+  <% else %>
+  <div class="card-footer-item">
+    <%= form_for @order_food_item do |f| %>
+    <%= f.hidden_field :food_item_id, :value => @food_item.id %>
+    <%= f.number_field :quantity, :value => 1, :min => 1 %>
+    <%= f.submit "Add to Cart"%>
+    <% end%>
+  </div>
   <% end %>
   </footer>
 </div>
