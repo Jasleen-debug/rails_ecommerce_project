@@ -8,7 +8,7 @@ class Order < ApplicationRecord
 
   def subtotal
     order_food_items.collect do |order_food_item|
-      order_food_item.valid? ? order_food_item.unit_price * order_food_item.quantity : 0
+      order_item.valid? ? order_food_item.unit_price * order_food_item.quantity : 0
     end.sum
   end
 

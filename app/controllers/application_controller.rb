@@ -1,7 +1,19 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
 
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :initialize_session, :configure_permitted_parameters,
+                if: :devise_controller?
+  helper_method :cart
+
+  private
+
+  def initialize_session
+    session[:shopping_cart] ||= []
+  end
+
+  def cart
+    FoodItem.find(session[:shopping_cart])
+  end
 
   protected
 

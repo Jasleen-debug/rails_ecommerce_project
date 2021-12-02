@@ -2,6 +2,9 @@ class OrderFoodItem < ApplicationRecord
   belongs_to :order
   belongs_to :food_item
 
+  before_save :set_unit_price
+  before_save :set_total
+
   def unit_price
     if persisted?
       self[:unit_price]
@@ -15,6 +18,7 @@ class OrderFoodItem < ApplicationRecord
   end
 
   private
+
   def set_unit_price
     self[:unit_price] = unit_price
   end
@@ -22,6 +26,4 @@ class OrderFoodItem < ApplicationRecord
   def set_total
     self[:total] = total * quantity
   end
-
-
 end
