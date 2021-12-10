@@ -2,6 +2,8 @@ class OrderFoodItem < ApplicationRecord
   belongs_to :order
   belongs_to :food_item
 
+  validates :order_id, :food_item_id, presence: true
+
   before_save :set_unit_price
   before_save :set_total
 

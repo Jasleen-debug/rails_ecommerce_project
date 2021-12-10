@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  include ApplicationHelper
-
   before_action :initialize_session, :configure_permitted_parameters,
                 if: :devise_controller?
   helper_method :cart
@@ -12,7 +10,11 @@ class ApplicationController < ActionController::Base
   end
 
   def cart
-    FoodItem.find(session[:shopping_cart])
+    if !session[:shopping_cart].nil?
+      FoodItem.find(session[:shopping_cart])
+    else
+      []
+    end
   end
 
   protected

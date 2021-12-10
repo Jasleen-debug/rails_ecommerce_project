@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://js.stripe.com/v3"></script>
-
   </head>
 
   <body>
@@ -34,9 +33,36 @@
             <% end %>
           </ul>
         </div>
-        <p class="notice"><%= notice %> </p>
-        <p class="alert"><%= alert %> </p>
+        <div>
+        <%= link_to image_tag("cart.png", width:60, alt: "cart"), root_path %>
+          <ul>
+            <li>
+              Cart
+              <% if cart.present? %>
+                <sup><%= cart.size %></sup>
+                <ul>
+                  <% cart.each do |food_item| %>
+                    <li>
+                      <%= food_item.name %> <%= link_to '➖', cart_path(food_item), method: :delete %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </li>
+          </ul>
+          </div>
+        <% if flash[:notice] %>
+          <p><%= flash[:notice]%></p>
+        <% end %>
+        <hr>
         <%= yield %>
+
+
+
+        </div>
+
+
+
         <footer>
           <hr>
           <p>Ethnic Kitchen + Bar - Copywrong <%= Time.current.year %></p>

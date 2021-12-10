@@ -1,22 +1,13 @@
 Rails.application.routes.draw do
-  # get "carts/show"
-  # get "cart/show"
-
+  get "orders/show"
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   ActiveAdmin.routes(self)
 
-  # get "food_items/index"
-  # get "food_items/show"
-  # get "food_categories/index"
-  # get "food_categories/show"
-
   resources :food_categories, only: %i[index show]
   resources :order_food_items
-  resource :carts, only: [:show]
-
-  # resources :food_items, only: %i[index show]
+  resources :cart, only: %i[create destroy]
 
   resources :food_items, only: %i[index show] do
     collection do

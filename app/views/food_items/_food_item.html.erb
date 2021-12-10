@@ -7,7 +7,7 @@
   <% if food_item.image.present? %>
   <div class="card-image">
     <figure class="image is-4by3">
-      <%= image_tag food_item.image %>
+      <%= image_tag food_item.image, alt: "Food item" %>
     </figure>
   </div>
   <%end%>
@@ -35,11 +35,18 @@
   <% if controller_name == "food_items" && action_name == "index"%>
   <a href="/food_items/<%= food_item.id%>" class="card-footer-item">View Details</a>
   <div class="card-footer-item">
-    <%= form_for @order_food_item do |f| %>
-    <%= f.hidden_field :food_item_id, :value => food_item.id %>
-    <%= f.number_field :quantity, :value => 1, :min => 1 %>
-    <%= f.submit "Add to Cart"%>
-    <% end%>
+
+    <% if cart.include?(food_item)%>
+      <%= button_to cart_path(food_item), method: :delete do %>
+      Remove From Cart
+      <% end %>
+    <% else %>
+      <%= form_with url: cart_index_path, method: :post do %>
+        <%= hidden_field_tag(:id, food_item.id) %>
+        <%= button_tag 'Add to Cart' %>
+      <% end %>
+    <% end %>
+
   </div>
   <% end %>
   </footer>

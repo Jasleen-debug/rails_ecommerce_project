@@ -1,29 +1,27 @@
 class OrderFoodItemsController < ApplicationController
-  before_action :set_order
+  before_action :load_order, only: [:create]
 
   def create
-    @order_food_item = @order.order_food_items.new(order_params)
-    @order.save
-    session[:order_id] = @order.id
+    @order_food_item = @order.order_food_items.new(quantity: 1, food_item_id: params[:food_item_id])
+
+    respond_to do |format|
+      if @order_food_item.save
+        format.html { redirect_to @order, notice: "Successfully added product to cart." }
+        format.json { render action: "show", status: :created, location: @order_food_item }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @order_food_item.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
-  # def update
-  #   @order_food_item = @order.order_food_items.find(params[:id])
-  #   @order_item.update_attributes(order_params)
-  #   @order_items = current_order.order_items
-  # end
+  private
 
-  # def destroy
-  #   @order_food_item = @order.order_food_items.find(params[:id])
-  #   @order_food_item.destroy
-  #   @order_items = current_order.order_items
-  # end
-
-  def order_params
-    params.require(:order_food_item).permit(:food_item_id, :quantity)
-  end
-
-  def set_order
-    @order = current_order
+  def load_order
+    @order = Order.find_or_create_by(session[:order_id], status: "unsubmitted")
+    if @order.new_record?
+      @order.save!
+      session[:order_id] = @order.id
+    end
   end
 end
